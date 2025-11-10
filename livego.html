@@ -38,9 +38,7 @@
     --scrollbar-thumb-hover: #50505a;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   html, body {
     margin: 0;
@@ -82,6 +80,7 @@
     pointer-events: none;
   }
 
+  /* LOGIN */
   .login-card {
     position: relative;
     z-index: 2;
@@ -156,12 +155,8 @@
     gap: 6px;
   }
 
-  .login-title span:nth-child(1) {
-    color: #fff;
-  }
-  .login-title span:nth-child(2) {
-    color: var(--accent);
-  }
+  .login-title span:nth-child(1) { color: #fff; }
+  .login-title span:nth-child(2) { color: var(--accent); }
 
   .login-subtitle {
     font-size: 13px;
@@ -188,19 +183,21 @@
     padding: 10px 14px;
     border-radius: 999px;
     border: 1px solid var(--border-subtle);
-    background: radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 60%), #16161a;
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 60%),
+      #16161a;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
   }
 
   .input-pill:focus-within {
     border-color: var(--accent-border);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 0 0 1px var(--accent-border), var(--accent-glow);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.02),
+      0 0 0 1px var(--accent-border),
+      var(--accent-glow);
   }
 
-  .input-pill span.icon {
-    font-size: 16px;
-    opacity: 0.8;
-  }
+  .input-pill span.icon { font-size: 16px; opacity: 0.8; }
 
   .input-pill input {
     border: none;
@@ -212,9 +209,7 @@
     padding: 4px 0;
   }
 
-  .input-pill input::placeholder {
-    color: #6f6f7a;
-  }
+  .input-pill input::placeholder { color: #6f6f7a; }
 
   .chip-row {
     display: flex;
@@ -290,9 +285,7 @@
     box-shadow: 0 0 10px rgba(46,213,115,0.85);
   }
 
-  .status-pill-label {
-    white-space: nowrap;
-  }
+  .status-pill-label { white-space: nowrap; }
 
   .login-button {
     position: relative;
@@ -315,9 +308,7 @@
     transition: all 0.18s ease;
   }
 
-  .login-button span.icon {
-    font-size: 16px;
-  }
+  .login-button span.icon { font-size: 16px; }
 
   .login-button:hover {
     transform: translateY(-1px);
@@ -397,6 +388,7 @@
     background: rgba(8,8,12,0.96);
   }
 
+  /* APP SHELL */
   .app-shell {
     position: relative;
     z-index: 2;
@@ -421,6 +413,7 @@
     min-height: 0;
   }
 
+  /* TOPBAR */
   .topbar {
     height: 58px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -479,15 +472,8 @@
     gap: 1px;
   }
 
-  .topbar-title {
-    font-size: 15px;
-    font-weight: 600;
-  }
-
-  .topbar-subtitle {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
+  .topbar-title { font-size: 15px; font-weight: 600; }
+  .topbar-subtitle { font-size: 11px; color: var(--text-muted); }
 
   .topbar-center {
     flex: 1;
@@ -501,7 +487,9 @@
     gap: 16px;
     padding: 4px;
     border-radius: 999px;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%), #14141a;
+    background:
+      radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%),
+      #14141a;
     border: 1px solid rgba(255,255,255,0.08);
     box-shadow: var(--shadow-card);
   }
@@ -517,9 +505,7 @@
     transition: all 0.18s ease;
   }
 
-  .topbar-nav span:hover {
-    opacity: 1;
-  }
+  .topbar-nav span:hover { opacity: 1; }
 
   .topbar-nav span.active {
     background:
@@ -552,16 +538,15 @@
     width: 20px;
     height: 20px;
     border-radius: 999px;
-    background: radial-gradient(circle at 0 0, #ffeaa7, transparent 60%),
-                radial-gradient(circle at 120% 120%, #ff9f1c, transparent 60%),
-                #111;
+    background:
+      radial-gradient(circle at 0 0, #ffeaa7, transparent 60%),
+      radial-gradient(circle at 120% 120%, #ff9f1c, transparent 60%),
+      #111;
   }
 
-  .profile-name {
-    font-size: 12px;
-    color: #f3f3f6;
-  }
+  .profile-name { font-size: 12px; color: #f3f3f6; }
 
+  /* SIDEBAR */
   .sidebar {
     width: 260px;
     border-right: 1px solid rgba(255,255,255,0.07);
@@ -597,14 +582,13 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 60%), #14141a;
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 60%),
+      #14141a;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
   }
 
-  .search-box span.icon {
-    font-size: 14px;
-    opacity: 0.75;
-  }
+  .search-box span.icon { font-size: 14px; opacity: 0.75; }
 
   .search-box input {
     border: none;
@@ -615,9 +599,7 @@
     width: 100%;
   }
 
-  .search-box input::placeholder {
-    color: #757585;
-  }
+  .search-box input::placeholder { color: #757585; }
 
   .filter-chips {
     display: flex;
@@ -649,7 +631,9 @@
     flex: 1;
     min-height: 0;
     border-radius: 20px;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 60%), #17171c;
+    background:
+      radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 60%),
+      #17171c;
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: var(--shadow-card);
     padding: 8px 6px 8px 8px;
@@ -667,10 +651,7 @@
     color: var(--text-muted);
   }
 
-  .sidebar-list-header strong {
-    color: #f5f5ff;
-    font-size: 12px;
-  }
+  .sidebar-list-header strong { color: #f5f5ff; font-size: 12px; }
 
   .sidebar-list {
     flex: 1;
@@ -691,10 +672,7 @@
     cursor: pointer;
   }
 
-  .sidebar-item:hover {
-    background: rgba(255,255,255,0.06);
-  }
-
+  .sidebar-item:hover { background: rgba(255,255,255,0.06); }
   .sidebar-item.active {
     background: var(--accent-soft);
     box-shadow: var(--accent-glow);
@@ -719,10 +697,7 @@
     text-overflow: ellipsis;
   }
 
-  .sidebar-item-count {
-    font-size: 11px;
-    color: #86869a;
-  }
+  .sidebar-item-count { font-size: 11px; color: #86869a; }
 
   .sidebar-footer {
     padding: 6px 4px 2px;
@@ -752,6 +727,7 @@
     background: rgba(10,10,16,0.96);
   }
 
+  /* MAIN PANEL */
   .main-panel {
     flex: 1;
     min-width: 0;
@@ -774,15 +750,8 @@
     gap: 2px;
   }
 
-  .center-title {
-    font-size: 17px;
-    font-weight: 600;
-  }
-
-  .center-subtitle {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
+  .center-title { font-size: 17px; font-weight: 600; }
+  .center-subtitle { font-size: 12px; color: var(--text-muted); }
 
   .center-pill {
     border-radius: 999px;
@@ -836,7 +805,9 @@
     flex: 1;
     min-width: 0;
     border-radius: 20px;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 60%), #16161c;
+    background:
+      radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 60%),
+      #16161c;
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: var(--shadow-card);
     display: flex;
@@ -854,9 +825,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
-  .list-header-row strong {
-    color: #f5f5ff;
-  }
+  .list-header-row strong { color: #f5f5ff; }
 
   .list-header-right {
     display: inline-flex;
@@ -882,7 +851,7 @@
 
   .content-row {
     display: grid;
-    grid-template-columns: 42px minmax(0,1fr) 90px;
+    grid-template-columns: 46px minmax(0,1fr) 90px;
     gap: 10px;
     padding: 8px 10px;
     border-bottom: 1px solid rgba(255,255,255,0.03);
@@ -890,8 +859,12 @@
     cursor: pointer;
   }
 
+  .content-row:nth-child(2n) {
+    background: rgba(255,255,255,0.02);
+  }
+
   .content-row:hover {
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.05);
   }
 
   .content-row.active {
@@ -899,8 +872,8 @@
   }
 
   .content-thumb {
-    width: 42px;
-    height: 24px;
+    width: 46px;
+    height: 28px;
     border-radius: 9px;
     background: #333;
     overflow: hidden;
@@ -913,7 +886,8 @@
   .content-thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: #222;
   }
 
   .content-main {
@@ -922,15 +896,8 @@
     gap: 1px;
   }
 
-  .content-title {
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .content-meta {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
+  .content-title { font-size: 13px; font-weight: 500; }
+  .content-meta { font-size: 11px; color: var(--text-muted); }
 
   .content-right {
     text-align: right;
@@ -947,12 +914,15 @@
     font-size: 10px;
   }
 
+  /* PLAYER */
   .player-panel {
     width: 420px;
     max-width: 44%;
     min-width: 320px;
     border-radius: 20px;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 60%), #181820;
+    background:
+      radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 60%),
+      #181820;
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: var(--shadow-card);
     display: flex;
@@ -998,24 +968,17 @@
     color: var(--text-muted);
   }
 
-  .player-meta span.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 2px 8px;
+  .subtitle-select {
+    margin-left: auto;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(10,10,14,0.96);
+    background: rgba(12,12,16,0.96);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text-muted);
+    font-size: 11px;
+    padding: 3px 8px;
   }
 
-  .player-meta span.badge span.dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--success);
-    box-shadow: 0 0 10px rgba(46,213,115,0.85);
-  }
-
+  /* INFO / EPG-panel */
   .epg-panel {
     margin: 0 10px 10px;
     border-radius: 16px;
@@ -1025,8 +988,8 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    max-height: 160px;
-    min-height: 80px;
+    max-height: 260px;
+    min-height: 120px;
   }
 
   .epg-header {
@@ -1047,29 +1010,59 @@
 
   .epg-item {
     font-size: 11px;
-    padding: 3px 0;
+    padding: 6px 0;
     display: flex;
     gap: 8px;
     color: var(--text-muted);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .epg-item:last-child {
+    border-bottom: none;
   }
 
   .epg-item span.time {
-    min-width: 70px;
+    min-width: 72px;
     color: #a2a2b3;
   }
 
-  .epg-item span.title {
+  .epg-body {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
-  .epg-item.current {
+  .epg-title {
+    font-size: 11px;
+  }
+
+  .epg-desc {
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .epg-item.current .epg-title {
     color: #fff;
-  }
-
-  .epg-item.current span.title {
     font-weight: 500;
   }
 
+  .season-chip {
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(12,12,16,0.96);
+    color: var(--text-muted);
+    font-size: 10px;
+    padding: 2px 8px;
+    cursor: pointer;
+  }
+  .season-chip.active {
+    background: var(--accent-soft);
+    border-color: var(--accent-border);
+    color: #ffd29c;
+  }
+
+  /* BOTTOM BAR */
   .bottom-bar {
     height: 30px;
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -1087,9 +1080,7 @@
     gap: 8px;
   }
 
-  .bottom-bar-left {
-    flex: 1;
-  }
+  .bottom-bar-left { flex: 1; }
 
   .bottom-bar-left span.dot {
     width: 6px;
@@ -1105,55 +1096,33 @@
     background: rgba(12,12,16,0.96);
   }
 
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--scrollbar-track);
-  }
-
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
   ::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
     border-radius: 999px;
   }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--scrollbar-thumb-hover);
-  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
 
   @media (max-width: 1100px) {
-    .app-shell {
-      border-radius: 0;
-    }
-
-    .app-root {
-      padding: 0;
-    }
-
-    .player-panel {
-      display: none;
-    }
+    .app-shell { border-radius: 0; }
+    .app-root { padding: 0; }
+    .player-panel { display: none; }
   }
 
   @media (max-width: 800px) {
-    .sidebar {
-      display: none;
-    }
-
-    .content-and-player {
-      flex-direction: column;
-    }
+    .sidebar { display: none; }
+    .content-and-player { flex-direction: column; }
   }
 </style>
 
-<!-- hls.js för HLS/M3U8 -->
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
 
 <div class="app-root">
 
+  <!-- LOGIN -->
   <div class="login-card" id="loginScreen">
     <div class="login-header">
       <div class="logo-circle">
@@ -1209,7 +1178,8 @@
       <div class="login-epg-row">
         <small>Tipset: använd samma användarnamn & lösenord som i din portal för M3U och XMLTV.</small>
         <div class="hint-text">
-          Exempel: <code>http://livego.club:8080/get.php?username=DIN_USER&password=DITT_PASS&type=m3u_plus&output=ts</code>
+          Exempel:
+          <code>http://livego.club:8080/get.php?username=DIN_USER&password=DITT_PASS&type=m3u_plus&output=ts</code>
         </div>
       </div>
     </div>
@@ -1240,12 +1210,11 @@
     </div>
   </div>
 
+  <!-- APP -->
   <div class="app-shell" id="app">
     <div class="topbar">
       <div class="topbar-left">
-        <div class="topbar-logo">
-          <span>LG</span>
-        </div>
+        <div class="topbar-logo"><span>LG</span></div>
         <div class="topbar-title-block">
           <div class="topbar-title">LIVEGO WEB TV</div>
           <div class="topbar-subtitle" id="portalLabel">Portal: livego.club</div>
@@ -1270,6 +1239,7 @@
     </div>
 
     <div class="app-inner">
+      <!-- SIDEBAR -->
       <div class="sidebar">
         <div class="sidebar-inner">
           <div>
@@ -1306,6 +1276,7 @@
         </div>
       </div>
 
+      <!-- MAIN PANEL -->
       <div class="main-panel">
         <div class="center-header">
           <div class="center-title-block">
@@ -1325,6 +1296,7 @@
         </div>
 
         <div class="content-and-player">
+          <!-- LIST -->
           <div class="content-list-panel">
             <div class="list-header-row">
               <span><strong>Innehåll</strong> • <span id="currentViewLabel">Live TV</span></span>
@@ -1335,6 +1307,7 @@
             <div class="content-list" id="channelList"></div>
           </div>
 
+          <!-- PLAYER + INFO/EPG -->
           <div class="player-panel">
             <div class="player-video-wrapper">
               <div class="player-video">
@@ -1343,13 +1316,16 @@
             </div>
             <div class="player-title-block">
               <div class="player-title" id="playerTitle">Ingen kanal eller titel vald</div>
-              <div class="player-meta">
+              <div class="player-meta" style="display:flex;align-items:center;gap:8px;">
                 <span id="playerMetaLabel">Välj något i listan till vänster för att starta.</span>
+                <select id="subtitleSelect" class="subtitle-select">
+                  <option value="-1">Undertext: Av</option>
+                </select>
               </div>
             </div>
             <div class="epg-panel">
               <div class="epg-header">
-                <span>EPG / Nu & Nästa</span>
+                <span id="epgHeaderTitle">EPG / Nu & Nästa</span>
                 <span id="epgStatusLabel">Ingen EPG-länk angiven</span>
               </div>
               <div class="epg-list" id="epgList"></div>
@@ -1401,6 +1377,7 @@
   const videoPlayer     = document.getElementById("videoPlayer");
   const playerTitleEl   = document.getElementById("playerTitle");
   const playerMetaLabel = document.getElementById("playerMetaLabel");
+  const epgHeaderTitle  = document.getElementById("epgHeaderTitle");
   const epgListEl       = document.getElementById("epgList");
   const epgStatusLabel  = document.getElementById("epgStatusLabel");
   const bottomLogEl     = document.getElementById("bottomLog");
@@ -1409,9 +1386,11 @@
   const searchInput     = document.getElementById("searchInput");
   const filterChips     = document.querySelectorAll(".filter-chips button");
   const refreshBtn      = document.getElementById("refreshBtn");
+  const subtitleSelect  = document.getElementById("subtitleSelect");
 
-  // HLS-instans
-  let hlsInstance = null;
+  const videoEl = videoPlayer; // alias
+
+  let hls = null; // global HLS-instans
 
   const state = {
     host: LIVEGO_SERVER,
@@ -1433,7 +1412,10 @@
     currentCategory: null,
     viewMode: "grid",
     xmltv: null,
-    useXmltv: false
+    useXmltv: false,
+    currentSeries: null,
+    currentSeriesEpisodes: [],
+    currentSeriesSeason: null
   };
 
   setInterval(() => {
@@ -1444,6 +1426,22 @@
   function log(msg) {
     const t = new Date().toLocaleTimeString();
     bottomLogEl.textContent = "[" + t + "] " + msg;
+  }
+
+  function clearSubtitleMenu() {
+    if (!subtitleSelect) return;
+    subtitleSelect.innerHTML = '<option value="-1">Undertext: Av</option>';
+  }
+
+  function maybeDecodeBase64(str) {
+    const s = (str || "").trim();
+    if (!s) return "";
+    if (!/^[A-Za-z0-9+/=]+$/.test(s) || s.length % 4 !== 0) return s;
+    try {
+      return decodeURIComponent(escape(atob(s)));
+    } catch (e) {
+      return s;
+    }
   }
 
   function buildApiUrl(extraParams) {
@@ -1460,9 +1458,7 @@
 
   async function fetchJson(url) {
     const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error("HTTP " + res.status);
-    }
+    if (!res.ok) throw new Error("HTTP " + res.status);
     return res.json();
   }
 
@@ -1510,6 +1506,9 @@
     state.vodFiltered      = [];
     state.xmltv = null;
     state.useXmltv = false;
+    state.currentSeries = null;
+    state.currentSeriesEpisodes = [];
+    state.currentSeriesSeason = null;
 
     setOnline(false);
     statusText.textContent = "Ansluter...";
@@ -1524,9 +1523,7 @@
     if (hasXtream) {
       tasks.push(
         loadXtreamData()
-          .then(() => {
-            xtreamOk = true;
-          })
+          .then(() => { xtreamOk = true; })
           .catch(err => {
             console.error(err);
             log("Xtream-fel: " + err.message);
@@ -1564,9 +1561,7 @@
       );
     }
 
-    if (tasks.length) {
-      await Promise.all(tasks);
-    }
+    if (tasks.length) await Promise.all(tasks);
 
     if (!xtreamOk && !m3uOk) {
       setOnline(false);
@@ -1606,12 +1601,12 @@
       vodList
     ] = await Promise.all(promises);
 
-    state.liveCategories = (liveCats && Array.isArray(liveCats)) ? liveCats : [];
-    state.liveStreams    = (liveStreams && Array.isArray(liveStreams)) ? liveStreams : [];
-    state.seriesCategories = (seriesCats && Array.isArray(seriesCats)) ? seriesCats : [];
-    state.seriesList       = (seriesList && Array.isArray(seriesList)) ? seriesList : [];
-    state.vodCategories    = (vodCats && Array.isArray(vodCats)) ? vodCats : [];
-    state.vodList          = (vodList && Array.isArray(vodList)) ? vodList : [];
+    state.liveCategories = Array.isArray(liveCats) ? liveCats : [];
+    state.liveStreams    = Array.isArray(liveStreams) ? liveStreams : [];
+    state.seriesCategories = Array.isArray(seriesCats) ? seriesCats : [];
+    state.seriesList       = Array.isArray(seriesList) ? seriesList : [];
+    state.vodCategories    = Array.isArray(vodCats) ? vodCats : [];
+    state.vodList          = Array.isArray(vodList) ? vodList : [];
 
     state.liveFiltered   = state.liveStreams.slice();
     state.seriesFiltered = state.seriesList.slice();
@@ -1654,11 +1649,13 @@
 
         const tvgId      = getAttr("tvg-id");
         const groupTitle = getAttr("group-title");
+        const logo       = getAttr("tvg-logo");
 
         current = {
           name,
           tvgId,
           groupTitle,
+          logo,
           url: ""
         };
       } else if (current && !line.startsWith("#")) {
@@ -1676,9 +1673,7 @@
     const byName = new Map();
     state.liveStreams.forEach(ch => {
       const key = normalizeSwedish(ch.name || ch.stream_display_name || "").toLowerCase();
-      if (!byName.has(key)) {
-        byName.set(key, []);
-      }
+      if (!byName.has(key)) byName.set(key, []);
       byName.get(key).push(ch);
     });
 
@@ -1687,9 +1682,10 @@
       const matches = byName.get(key);
       if (matches && matches.length) {
         matches.forEach(ch => {
-          ch.m3u_url = mch.url;
-          ch.tvg_id  = mch.tvgId || ch.tvg_id;
+          ch.m3u_url   = mch.url;
+          ch.tvg_id    = mch.tvgId || ch.tvg_id;
           ch.group_title = mch.groupTitle || ch.category_name;
+          ch.logo      = mch.logo || ch.logo;
         });
       } else {
         state.liveStreams.push({
@@ -1698,7 +1694,8 @@
           stream_display_name: mch.name,
           category_name: mch.groupTitle || "M3U",
           m3u_url: mch.url,
-          tvg_id: mch.tvgId
+          tvg_id: mch.tvgId,
+          logo: mch.logo
         });
       }
     });
@@ -1706,9 +1703,7 @@
     const grouped = {};
     state.liveStreams.forEach(ch => {
       const catName = ch.category_name || "Okänd";
-      if (!grouped[catName]) {
-        grouped[catName] = 0;
-      }
+      if (!grouped[catName]) grouped[catName] = 0;
       grouped[catName]++;
     });
 
@@ -1751,12 +1746,13 @@
         channel: p.getAttribute("channel"),
         start: p.getAttribute("start"),
         stop: p.getAttribute("stop"),
-        title: p.querySelector("title")?.textContent || ""
+        title: p.querySelector("title")?.textContent || "",
+        desc: p.querySelector("desc")?.textContent || ""
       });
     });
 
     state.xmltv = { channels, programmes };
-    log("EPG: " + programmes.length + " program inlästa.");
+    log("EPG: " + programmes.length + " program inlästa från XMLTV.");
   }
 
   function updateSummary() {
@@ -1804,7 +1800,10 @@
       count.className = "sidebar-item-count";
       let n = 0;
       if (state.currentView === "live") {
-        n = state.liveStreams.filter(ch => (ch.category_id + "") === (cat.category_id + "") || (ch.category_name === cat.category_name)).length;
+        n = state.liveStreams.filter(ch =>
+          (ch.category_id + "") === (cat.category_id + "") ||
+          (ch.category_name === cat.category_name)
+        ).length;
       } else if (state.currentView === "series") {
         n = state.seriesList.filter(s => (s.category_id + "") === (cat.category_id + "")).length;
       } else if (state.currentView === "movies") {
@@ -1853,13 +1852,14 @@
       list = list.filter(item => {
         const catId  = (item.category_id + "");
         const catName= item.category_name;
-        return (catId === (state.currentCategory.category_id + "")) || (catName === state.currentCategory.category_name);
+        return (catId === (state.currentCategory.category_id + "")) ||
+               (catName === state.currentCategory.category_name);
       });
     }
 
-    state.liveFiltered   = (state.currentView === "live")   ? list : state.liveFiltered;
-    state.seriesFiltered = (state.currentView === "series") ? list : state.seriesFiltered;
-    state.vodFiltered    = (state.currentView === "movies") ? list : state.vodFiltered;
+    if (state.currentView === "live")   state.liveFiltered   = list;
+    if (state.currentView === "series") state.seriesFiltered = list;
+    if (state.currentView === "movies") state.vodFiltered    = list;
 
     renderContentList(list);
   }
@@ -1885,19 +1885,30 @@
     centerPillEl.textContent  = list.length + " objekt";
 
     list.forEach(item => {
+      const displayName = item.name || item.title || item.stream_display_name || "Okänt namn";
+
       const row = document.createElement("div");
       row.className = "content-row";
 
       const thumb = document.createElement("div");
       thumb.className = "content-thumb";
-      thumb.textContent = "LG";
+
+      const logoUrl = item.stream_icon || item.logo || item.tvg_logo || item.movie_image;
+      if (logoUrl) {
+        const img = document.createElement("img");
+        img.src = logoUrl;
+        img.alt = displayName;
+        thumb.appendChild(img);
+      } else {
+        thumb.textContent = displayName.substring(0, 3).toUpperCase();
+      }
 
       const main = document.createElement("div");
       main.className = "content-main";
 
       const title = document.createElement("div");
       title.className = "content-title";
-      title.textContent = item.name || item.title || item.stream_display_name || "Okänt namn";
+      title.textContent = displayName;
 
       const meta = document.createElement("div");
       meta.className = "content-meta";
@@ -1906,9 +1917,10 @@
         const cat = item.category_name || "";
         meta.textContent = cat || "Live-kanal";
       } else if (state.currentView === "series") {
-        meta.textContent = "Serie • " + (item.seasons ? (item.seasons.length + " säsonger") : "okänd längd");
+        meta.textContent = "Serie • okänd längd";
       } else if (state.currentView === "movies") {
-        meta.textContent = "Film • " + (item.releaseDate || "okänt år");
+        const year = item.releaseDate || item.releasedate || item.year || "okänt år";
+        meta.textContent = "Film • " + year;
       }
 
       main.appendChild(title);
@@ -1931,151 +1943,680 @@
       row.addEventListener("click", () => {
         document.querySelectorAll(".content-row").forEach(el => el.classList.remove("active"));
         row.classList.add("active");
-        playItem(item);
+        if (state.currentView === "series") {
+          openSeries(item);
+        } else {
+          playItem(item);
+        }
       });
 
       channelListEl.appendChild(row);
     });
   }
 
-  // NY: spelar upp val baserat på vy + HLS-stöd
+  // --- uppspelning beroende på vy ---
   function playItem(item) {
-    let url = "";
-
     if (state.currentView === "live") {
-      if (item.m3u_url) {
-        url = item.m3u_url;
-        if (url.includes(".ts")) {
-          url = url.replace(/\.ts(\?|$)/, ".m3u8$1");
-        }
-      } else if (item.stream_id) {
-        const base = state.host.replace(/\/+$/,"");
-        url = base + "/live/" + encodeURIComponent(state.username) + "/" +
-                     encodeURIComponent(state.password) + "/" +
-                     item.stream_id + ".m3u8";
-      }
-      connectionLabel.textContent = "Live: " + (item.name || item.stream_display_name || "");
+      playLiveChannel(item);
+    } else if (state.currentView === "movies") {
+      playMovie(item);
     }
+  }
 
-    else if (state.currentView === "movies") {
-      if (item.stream_id) {
-        const base = state.host.replace(/\/+$/,"");
-        url = base + "/movie/" + encodeURIComponent(state.username) + "/" +
-                           encodeURIComponent(state.password) + "/" +
-                           item.stream_id + ".mp4";
-      }
-      connectionLabel.textContent = "Film: " + (item.name || item.title || "");
-    }
+  function playLiveChannel(ch) {
+    const name =
+      ch.name ||
+      ch.stream_display_name ||
+      "Okänd kanal";
 
-    else if (state.currentView === "series") {
+    let url =
+      ch.m3u_url   ||
+      ch.stream_url ||
+      ch.url        ||
+      null;
+
+    if (!url && ch.stream_id && state.host && state.username && state.password) {
       const base = state.host.replace(/\/+$/,"");
-      if (item.episode_id) {
-        url = base + "/series/" + encodeURIComponent(state.username) + "/" +
-                           encodeURIComponent(state.password) + "/" +
-                           item.episode_id + ".mp4";
-      } else if (item.stream_id) {
-        url = base + "/series/" + encodeURIComponent(state.username) + "/" +
-                           encodeURIComponent(state.password) + "/" +
-                           item.stream_id + ".mp4";
-      }
-      connectionLabel.textContent = "Serie: " + (item.name || item.title || "");
+      url = base + "/live/" +
+        encodeURIComponent(state.username) + "/" +
+        encodeURIComponent(state.password) + "/" +
+        encodeURIComponent(ch.stream_id) + ".m3u8";
     }
 
     if (!url) {
-      log("Ingen ström-URL hittad för det valda objektet.");
+      log("Ingen stream-url hittad för denna kanal.");
       return;
     }
 
-    playerTitleEl.textContent = item.name || item.title || item.stream_display_name || "Okänt namn";
+    playerTitleEl.textContent   = name;
     playerMetaLabel.textContent = "Spelar via: " + state.host.replace(/^https?:\/\//,"");
+    connectionLabel.textContent = "Live: " + name;
 
-    playStreamUrl(url);
-    updateEpgForItem(item);
+    playInVideo(url);
+    updateEpgForLiveChannel(ch);
   }
 
-  // NY: HLS-hantering (hls.js) + fallback
-  function playStreamUrl(url) {
-    if (hlsInstance) {
-      hlsInstance.destroy();
-      hlsInstance = null;
+  function playMovie(item) {
+    const name =
+      item.name ||
+      item.title ||
+      "Okänd film";
+
+    let url =
+      item.direct_source ||
+      item.stream_url    ||
+      item.url           ||
+      null;
+
+    if (!url && item.stream_id && state.host && state.username && state.password) {
+      const base = state.host.replace(/\/+$/,"");
+      const ext  = (item.container_extension || "mp4").replace(/^\./,"");
+      url = base + "/movie/" +
+        encodeURIComponent(state.username) + "/" +
+        encodeURIComponent(state.password) + "/" +
+        encodeURIComponent(item.stream_id) + "." + ext;
     }
 
-    if (window.Hls && Hls.isSupported() && url.includes(".m3u8")) {
-      hlsInstance = new Hls({
-        maxBufferLength: 60,
-        liveSyncDuration: 10
-      });
-      hlsInstance.loadSource(url);
-      hlsInstance.attachMedia(videoPlayer);
-      hlsInstance.on(Hls.Events.MANIFEST_PARSED, function () {
-        videoPlayer.play().catch(() => {});
-      });
-    } else {
-      videoPlayer.src = url;
-      videoPlayer.load();
-      videoPlayer.play().catch(() => {});
-    }
-  }
-
-  function updateEpgForItem(item) {
-    if (!state.xmltv || !state.useXmltv) {
-      epgStatusLabel.textContent = "Ingen EPG eller felaktig XMLTV-länk.";
-      epgListEl.innerHTML = "";
+    if (!url) {
+      log("Ingen stream-url hittad för denna film.");
       return;
     }
 
-    let tvgId = item.tvg_id;
-    if (!tvgId) {
-      const name = (item.name || item.stream_display_name || "").toLowerCase();
-      const ch = state.xmltv.channels.find(c => (c.name || "").toLowerCase() === name);
-      tvgId = ch ? ch.id : null;
-    }
+    playerTitleEl.textContent   = name;
+    playerMetaLabel.textContent = "Spelar via: " + state.host.replace(/^https?:\/\//,"");
+    connectionLabel.textContent = "Film: " + name;
 
-    if (!tvgId) {
-      epgStatusLabel.textContent = "Ingen EPG-koppling hittades.";
-      epgListEl.innerHTML = "";
-      return;
-    }
+    playInVideo(url);
 
-    const now = new Date();
-    const progs = state.xmltv.programmes.filter(p => {
-      if (p.channel !== tvgId) return false;
-      const start = parseXmltvDate(p.start);
-      const stop  = parseXmltvDate(p.stop);
-      return start && stop && stop > now && start < (now.getTime() + 6 * 60 * 60 * 1000);
-    }).sort((a,b) => parseXmltvDate(a.start) - parseXmltvDate(b.start));
-
+    epgHeaderTitle.textContent = "Info";
+    epgStatusLabel.textContent = "Hämtar info om filmen...";
     epgListEl.innerHTML = "";
-    if (!progs.length) {
-      epgStatusLabel.textContent = "EPG hittades, men inga program nära i tiden.";
+    updateVodInfo(item);
+  }
+
+  // --- SERIER ---
+
+  async function openSeries(seriesItem) {
+    state.currentSeries = seriesItem;
+    state.currentSeriesEpisodes = [];
+    state.currentSeriesSeason = null;
+
+    const name = seriesItem.name || seriesItem.title || "Okänd serie";
+    playerTitleEl.textContent = name;
+    playerMetaLabel.textContent = "Serie: välj säsong och avsnitt";
+
+    epgHeaderTitle.textContent = "Säsonger & avsnitt";
+    epgStatusLabel.textContent = "Laddar serie-info...";
+    epgListEl.innerHTML = "";
+
+    if (!seriesItem.series_id) {
+      epgStatusLabel.textContent = "Ingen serie-ID – kan inte läsa avsnitt.";
       return;
     }
 
-    epgStatusLabel.textContent = "EPG aktiv (" + progs.length + " program)";
-    const nowMs = now.getTime();
+    try {
+      const data = await fetchJson(buildApiUrl({
+        action: "get_series_info",
+        series_id: seriesItem.series_id
+      }));
 
-    progs.forEach(p => {
-      const start = parseXmltvDate(p.start);
-      const stop  = parseXmltvDate(p.stop);
-      if (!start || !stop) return;
+      const episodesObj = data.episodes || {};
+      const episodes = [];
 
-      const div = document.createElement("div");
-      div.className = "epg-item";
-      if (start <= nowMs && nowMs < stop) {
-        div.classList.add("current");
+      Object.keys(episodesObj).forEach(seasonKey => {
+        const seasonEpisodes = episodesObj[seasonKey] || [];
+        seasonEpisodes.forEach(ep => {
+          episodes.push({
+            ...ep,
+            season: seasonKey
+          });
+        });
+      });
+
+      if (!episodes.length) {
+        epgStatusLabel.textContent = "Inga avsnitt hittades.";
+        epgListEl.innerHTML = "";
+        return;
       }
+
+      state.currentSeriesEpisodes = episodes;
+      const seasons = [...new Set(episodes.map(e => e.season))].sort(
+        (a,b) => parseInt(a,10) - parseInt(b,10)
+      );
+      state.currentSeriesSeason = seasons[0];
+
+      const seriesInfo = data.info || {};
+      renderSeriesEpisodesPanel(seriesItem, seasons, seriesInfo);
+
+      epgStatusLabel.textContent = "Serie: " + seasons.length + " säsonger, " + episodes.length + " avsnitt";
+      log("Serie-info: " + name + " – " + seasons.length + " säsonger.");
+    } catch (e) {
+      console.error(e);
+      epgStatusLabel.textContent = "Kunde inte hämta serie-info.";
+    }
+  }
+
+  // NY version med program-info (plot) avkodad
+  function renderSeriesEpisodesPanel(seriesItem, seasons, info) {
+    epgListEl.innerHTML = "";
+
+    info = info || {};
+
+    const infoRow = document.createElement("div");
+    infoRow.className = "epg-item";
+
+    const infoLabel = document.createElement("span");
+    infoLabel.className = "time";
+    infoLabel.textContent = "Info";
+
+    const infoBody = document.createElement("div");
+    infoBody.className = "epg-body";
+
+    const title = seriesItem.name || seriesItem.title || "Okänd serie";
+    const year   = info.releaseDate || info.release_date || info.year || "";
+    const genre  = info.genre || "";
+    const rating = info.rating || info.rating_5based || "";
+    const plot   = maybeDecodeBase64(info.plot || "");
+
+    const titleDiv = document.createElement("div");
+    titleDiv.className = "epg-title";
+    titleDiv.textContent = title + (year ? " (" + year + ")" : "");
+
+    const metaDiv = document.createElement("div");
+    metaDiv.className = "epg-desc";
+    let metaText = "";
+    if (genre)  metaText += "Genre: " + genre;
+    if (rating) metaText += (metaText ? " • " : "") + "Betyg: " + rating + "/10";
+    metaDiv.textContent = metaText;
+
+    const plotDiv = document.createElement("div");
+    plotDiv.className = "epg-desc";
+    plotDiv.textContent = plot;
+
+    infoBody.appendChild(titleDiv);
+    if (metaText) infoBody.appendChild(metaDiv);
+    if (plot)     infoBody.appendChild(plotDiv);
+
+    infoRow.appendChild(infoLabel);
+    infoRow.appendChild(infoBody);
+    epgListEl.appendChild(infoRow);
+
+    const seasonRow = document.createElement("div");
+    seasonRow.className = "epg-item";
+
+    const seasonLabel = document.createElement("span");
+    seasonLabel.className = "time";
+    seasonLabel.textContent = "Säsong";
+
+    const seasonBody = document.createElement("div");
+    seasonBody.className = "epg-body";
+
+    const chipContainer = document.createElement("div");
+    chipContainer.style.display = "flex";
+    chipContainer.style.flexWrap = "wrap";
+    chipContainer.style.gap = "6px";
+
+    seasons.forEach(season => {
+      const btn = document.createElement("button");
+      btn.className = "season-chip" + (season == state.currentSeriesSeason ? " active" : "");
+      btn.textContent = "S" + season;
+      btn.addEventListener("click", () => {
+        state.currentSeriesSeason = season;
+        chipContainer.querySelectorAll(".season-chip").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderSeriesEpisodesList(seriesItem);
+      });
+      chipContainer.appendChild(btn);
+    });
+
+    seasonBody.appendChild(chipContainer);
+    seasonRow.appendChild(seasonLabel);
+    seasonRow.appendChild(seasonBody);
+    epgListEl.appendChild(seasonRow);
+
+    const episodesContainer = document.createElement("div");
+    episodesContainer.id = "seriesEpisodesContainer";
+    epgListEl.appendChild(episodesContainer);
+
+    renderSeriesEpisodesList(seriesItem);
+  }
+
+  // NY version – avsnittsbeskrivning avkodad
+  function renderSeriesEpisodesList(seriesItem) {
+    const container = document.getElementById("seriesEpisodesContainer");
+    if (!container) return;
+    container.innerHTML = "";
+
+    const season = state.currentSeriesSeason;
+    const episodes = state.currentSeriesEpisodes.filter(e => e.season == season);
+
+    episodes.sort((a,b) => (a.episode_num || 0) - (b.episode_num || 0));
+
+    episodes.forEach(ep => {
+      const row = document.createElement("div");
+      row.className = "epg-item";
 
       const timeSpan = document.createElement("span");
       timeSpan.className = "time";
-      timeSpan.textContent = formatTime(start) + " - " + formatTime(stop);
+      const epNum = ep.episode_num || ep.episode || "?";
+      timeSpan.textContent = "S" + season + " • E" + epNum;
 
-      const titleSpan = document.createElement("span");
-      titleSpan.className = "title";
-      titleSpan.textContent = p.title || "Okänt program";
+      const body = document.createElement("div");
+      body.className = "epg-body";
+
+      const titleDiv = document.createElement("div");
+      titleDiv.className = "epg-title";
+      titleDiv.textContent = ep.title || ep.name || ("Avsnitt " + epNum);
+
+      const descDiv = document.createElement("div");
+      descDiv.className = "epg-desc";
+      const infoObj = ep.info && typeof ep.info === "object" ? ep.info : {};
+      const descRaw  = infoObj.plot || infoObj.description || ep.plot || "";
+      const descText = maybeDecodeBase64(descRaw);
+      descDiv.textContent = descText;
+
+      body.appendChild(titleDiv);
+      if (descText) body.appendChild(descDiv);
+
+      row.appendChild(timeSpan);
+      row.appendChild(body);
+
+      row.addEventListener("click", () => {
+        playSeriesEpisode(seriesItem, ep);
+      });
+
+      container.appendChild(row);
+    });
+  }
+
+  function playSeriesEpisode(seriesItem, ep) {
+    const seriesName = seriesItem.name || seriesItem.title || "Okänd serie";
+
+    let url =
+      ep.direct_source ||
+      ep.stream_url    ||
+      ep.url           ||
+      null;
+
+    const epId =
+      ep.id ||
+      ep.episode_id ||
+      ep.stream_id ||
+      (ep.info && (ep.info.id || ep.info.stream_id || ep.info.movie_id));
+
+    const base = state.host.replace(/\/+$/,"");
+    const ext  = (
+      ep.container_extension ||
+      (ep.info && ep.info.container_extension) ||
+      "mp4"
+    ).replace(/^\./,"");
+
+    if (!url && epId && state.host && state.username && state.password) {
+      url = base + "/series/" +
+        encodeURIComponent(state.username) + "/" +
+        encodeURIComponent(state.password) + "/" +
+        encodeURIComponent(epId) + "." + ext;
+    }
+
+    if (!url) {
+      log("Ingen stream-url hittad för detta avsnitt.");
+      return;
+    }
+
+    const epNum = ep.episode_num || ep.episode || "?";
+    const season = ep.season || "?";
+
+    const epTitle = seriesName + " – S" + season + "E" + epNum;
+
+    playerTitleEl.textContent   = epTitle;
+    playerMetaLabel.textContent = ep.title || ("Avsnitt " + epNum);
+    connectionLabel.textContent = "Serie: " + epTitle;
+
+    playInVideo(url);
+
+    epgHeaderTitle.textContent = "Säsonger & avsnitt";
+  }
+
+  // --- undertexter ---
+
+  function populateSubtitleMenuFromHls(tracks) {
+    clearSubtitleMenu();
+    if (!tracks || !tracks.length) return;
+
+    tracks.forEach((t, index) => {
+      const opt = document.createElement("option");
+      opt.value = index;
+      const lang = t.lang || "";
+      const name = t.name || t.label || ("Spår " + (index + 1));
+      opt.textContent = "Undertext: " + (lang ? lang.toUpperCase() + " – " + name : name);
+      subtitleSelect.appendChild(opt);
+    });
+  }
+
+  function populateSubtitleMenuFromNativeTracks() {
+    clearSubtitleMenu();
+    const tracks = videoEl.textTracks;
+    if (!tracks || !tracks.length) return;
+
+    for (let i = 0; i < tracks.length; i++) {
+      const t = tracks[i];
+      const opt = document.createElement("option");
+      opt.value = i;
+      const lang = t.language || "";
+      const label = t.label || ("Spår " + (i + 1));
+      opt.textContent = "Undertext: " + (lang ? lang.toUpperCase() + " – " + label : label);
+      subtitleSelect.appendChild(opt);
+    }
+  }
+
+  if (subtitleSelect) {
+    subtitleSelect.addEventListener("change", () => {
+      const val = parseInt(subtitleSelect.value, 10);
+
+      if (isNaN(val) || val < 0) {
+        if (hls) {
+          hls.subtitleTrack = -1;
+        }
+        const tracks = videoEl.textTracks;
+        for (let i = 0; i < tracks.length; i++) {
+          tracks[i].mode = "disabled";
+        }
+        return;
+      }
+
+      if (hls) {
+        hls.subtitleTrack = val;
+        const tracks = videoEl.textTracks;
+        for (let i = 0; i < tracks.length; i++) {
+          tracks[i].mode = (i === val ? "showing" : "disabled");
+        }
+      } else {
+        const tracks = videoEl.textTracks;
+        for (let i = 0; i < tracks.length; i++) {
+          tracks[i].mode = (i === val ? "showing" : "disabled");
+        }
+      }
+    });
+  }
+
+  // --- generisk uppspelning (HLS + vanliga filer) ---
+  function playInVideo(url) {
+    if (!url) return;
+
+    const lowerUrl = url.toLowerCase();
+
+    clearSubtitleMenu();
+
+    if (window.Hls && Hls.isSupported() && lowerUrl.includes(".m3u8")) {
+      if (hls) {
+        try { hls.destroy(); } catch (e) {}
+      }
+
+      hls = new Hls({
+        enableWebVTT: true,
+        enableCEA708Captions: true,
+        maxBufferLength: 60,
+        liveSyncDuration: 10
+      });
+
+      hls.loadSource(url);
+      hls.attachMedia(videoEl);
+
+      hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function (event, data) {
+        populateSubtitleMenuFromHls(data.subtitleTracks || []);
+      });
+
+      hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        videoEl.play().catch(() => {});
+      });
+
+      return;
+    }
+
+    videoEl.src = url;
+    videoEl.load();
+
+    videoEl.onloadedmetadata = function () {
+      populateSubtitleMenuFromNativeTracks();
+    };
+
+    videoEl.play().catch(() => {});
+  }
+
+  videoEl.addEventListener("error", () => {
+    if (!videoEl.error) return;
+    const codes = {
+      1: "MEDIA_ERR_ABORTED",
+      2: "MEDIA_ERR_NETWORK",
+      3: "MEDIA_ERR_DECODE",
+      4: "MEDIA_ERR_SRC_NOT_SUPPORTED"
+    };
+    const msg = codes[videoEl.error.code] || ("Felkod " + videoEl.error.code);
+    log("Video-fel: " + msg);
+  });
+
+  // --- EPG / INFO ---
+
+  async function updateEpgForLiveChannel(item) {
+    epgStatusLabel.textContent = "Laddar EPG...";
+    epgListEl.innerHTML = "";
+
+    if (state.useXmltv && state.xmltv && state.xmltv.channels && state.xmltv.programmes) {
+      let tvgId = item.tvg_id;
+      if (!tvgId) {
+        const name = (item.name || item.stream_display_name || "").toLowerCase();
+        const ch = state.xmltv.channels.find(c => (c.name || "").toLowerCase() === name);
+        tvgId = ch ? ch.id : null;
+      }
+
+      if (tvgId) {
+        const now = new Date();
+        const progs = state.xmltv.programmes
+          .filter(p => p.channel === tvgId)
+          .filter(p => {
+            const start = parseXmltvDate(p.start);
+            const stop  = parseXmltvDate(p.stop);
+            return start && stop && stop > now && start < (now.getTime() + 6 * 60 * 60 * 1000);
+          })
+          .sort((a,b) => parseXmltvDate(a.start) - parseXmltvDate(b.start));
+
+        if (progs.length) {
+          renderXmltvEpg(progs);
+          epgStatusLabel.textContent = "EPG (XMLTV) – " + progs.length + " program";
+          log("EPG (XMLTV): " + progs.length + " program för kanal.");
+          return;
+        }
+      }
+      log("Ingen match i XMLTV, hämtar kort-EPG från portal...");
+    }
+
+    const list = await fetchShortEpg(item);
+    if (!list || !list.length) {
+      epgStatusLabel.textContent = "Ingen EPG hittades för denna kanal.";
+      epgListEl.innerHTML = "";
+      return;
+    }
+    renderShortEpg(list);
+    epgStatusLabel.textContent = "EPG via portal – " + list.length + " program";
+    log("EPG (portal): " + list.length + " program för kanal.");
+  }
+
+  async function fetchShortEpg(item) {
+    if (!state.host || !state.username || !state.password || !item.stream_id) return null;
+    try {
+      const data = await fetchJson(buildApiUrl({
+        action: "get_short_epg",
+        stream_id: item.stream_id,
+        limit: 10
+      }));
+      const list = data.epg_listings || data || [];
+      return Array.isArray(list) ? list : [];
+    } catch (e) {
+      console.warn("EPG error", e);
+      log("EPG-fel (kort-EPG): " + e.message);
+      return null;
+    }
+  }
+
+  async function updateVodInfo(item) {
+    epgListEl.innerHTML = "";
+
+    if (!state.host || !state.username || !state.password || !item.stream_id) {
+      epgStatusLabel.textContent = "Ingen info tillgänglig.";
+      return;
+    }
+
+    try {
+      const data = await fetchJson(buildApiUrl({
+        action: "get_vod_info",
+        vod_id: item.stream_id
+      }));
+
+      const info = data.info || {};
+      const movie = data.movie_data || {};
+
+      const year   = info.releasedate || movie.releasedate || movie.year || "";
+      const genre  = info.genre || movie.category_name || "";
+      const length = info.duration || info.episode_run_time || "";
+      const rating = info.rating || info.rating_5based || movie.rating || "";
+      const cast   = info.cast || "";
+      const director = info.director || "";
+      const plot   = maybeDecodeBase64(info.plot || "");
+      const containerExt = item.container_extension || movie.container_extension || "";
+
+      epgStatusLabel.textContent = "Info från portal";
+
+      function addRow(label, text) {
+        if (!text) return;
+        const row = document.createElement("div");
+        row.className = "epg-item";
+
+        const left = document.createElement("span");
+        left.className = "time";
+        left.textContent = label;
+
+        const body = document.createElement("div");
+        body.className = "epg-body";
+
+        const t = document.createElement("div");
+        t.className = "epg-title";
+        t.textContent = text;
+
+        body.appendChild(t);
+        row.appendChild(left);
+        row.appendChild(body);
+        epgListEl.appendChild(row);
+      }
+
+      addRow("År", year);
+      addRow("Genre", genre);
+      addRow("Längd", length);
+      addRow("Betyg", rating ? rating + " / 10" : "");
+      addRow("Regi", director);
+      addRow("Medverkande", cast);
+
+      if (plot) {
+        const row = document.createElement("div");
+        row.className = "epg-item";
+        const left = document.createElement("span");
+        left.className = "time";
+        left.textContent = "Beskrivning";
+        const body = document.createElement("div");
+        body.className = "epg-body";
+        const t = document.createElement("div");
+        t.className = "epg-desc";
+        t.textContent = plot;
+        body.appendChild(t);
+        row.appendChild(left);
+        row.appendChild(body);
+        epgListEl.appendChild(row);
+      }
+
+      if (containerExt) {
+        addRow("Format", containerExt.toUpperCase());
+      }
+
+      if (!epgListEl.children.length) {
+        epgStatusLabel.textContent = "Ingen extra info hittades.";
+      }
+    } catch (e) {
+      console.error(e);
+      epgStatusLabel.textContent = "Kunde inte hämta info om filmen.";
+    }
+  }
+
+  function renderXmltvEpg(progs) {
+    epgListEl.innerHTML = "";
+    const now = Date.now();
+
+    progs.forEach(p => {
+      const startMs = parseXmltvDate(p.start);
+      const stopMs  = parseXmltvDate(p.stop);
+      if (!startMs || !stopMs) return;
+
+      const div = document.createElement("div");
+      div.className = "epg-item";
+      if (startMs <= now && now < stopMs) div.classList.add("current");
+
+      const timeSpan = document.createElement("span");
+      timeSpan.className = "time";
+      timeSpan.textContent = formatTime(startMs) + " - " + formatTime(stopMs);
+
+      const body = document.createElement("div");
+      body.className = "epg-body";
+
+      const titleDiv = document.createElement("div");
+      titleDiv.className = "epg-title";
+      titleDiv.textContent = p.title || "Okänt program";
+
+      const descDiv = document.createElement("div");
+      descDiv.className = "epg-desc";
+      descDiv.textContent = p.desc || "";
+
+      body.appendChild(titleDiv);
+      if (descDiv.textContent) body.appendChild(descDiv);
 
       div.appendChild(timeSpan);
-      div.appendChild(titleSpan);
+      div.appendChild(body);
       epgListEl.appendChild(div);
+    });
+  }
+
+  function renderShortEpg(list) {
+    epgListEl.innerHTML = "";
+    list.forEach(item => {
+      const row = document.createElement("div");
+      row.className = "epg-item";
+
+      const start = item.start || item.start_timestamp || "";
+      const end   = item.end   || item.end_timestamp   || "";
+      const timeText = formatEpgTime(start, end);
+
+      const timeSpan = document.createElement("span");
+      timeSpan.className = "time";
+      timeSpan.textContent = timeText;
+
+      const body = document.createElement("div");
+      body.className = "epg-body";
+
+      const titleDiv = document.createElement("div");
+      titleDiv.className = "epg-title";
+      const titleText = maybeDecodeBase64(item.title || "");
+      titleDiv.textContent = titleText;
+
+      const descDiv = document.createElement("div");
+      descDiv.className = "epg-desc";
+      const descText = maybeDecodeBase64(
+        item.description || item.short_description || ""
+      );
+      descDiv.textContent = descText;
+
+      body.appendChild(titleDiv);
+      if (descDiv.textContent) body.appendChild(descDiv);
+
+      row.appendChild(timeSpan);
+      row.appendChild(body);
+      epgListEl.appendChild(row);
     });
   }
 
@@ -2105,6 +2646,17 @@
     const d = new Date(ms);
     return d.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" });
   }
+
+  function formatEpgTime(start, end) {
+    const s = (start || "").toString();
+    const e = (end || "").toString();
+    const sTime = s.split(" ")[1]?.substring(0,5) || "";
+    const eTime = e.split(" ")[1]?.substring(0,5) || "";
+    if (sTime && eTime) return sTime + " – " + eTime;
+    return s || "";
+  }
+
+  // --- events ---
 
   loginBtn.addEventListener("click", () => {
     state.username = (usernameInput.value || "").trim();
