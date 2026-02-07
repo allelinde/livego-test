@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>IPTV Player – Live (m3u8)</title>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<style>
+:root{
+  --bg:#070b12;
+  --panel:#0b1220;
+  --panel2:#0a1020;
+  --line:rgba(255,255,255,.08);
+  --text:#eaf0ff;
+  --muted:rgba(234,240,255,.70);
+  --muted2:rgba(234,240,255,.55);
+  --accent:#7c3aed;
+  --accent2:#4f46e5;
+  --good:#46d369;
+  --r:16px;
+  --shadow: 0 18px 50px rgba(0,0,0,.55);
+  --focus: 0 0 0 3px rgba(255,255,255,.16), 0 0 0 5px rgba(124,58,237,.55);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(124,58,237,.22), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(79,70,229,.16), transparent 60%),
+    radial-gradient(circle at 50% 85%, rgba(255,255,255,.05), transparent 55%),
+    #05070c;
+}
+a{color:inherit}
+button,input,select{font:inherit}
+.topbar{
+  height:54px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 14px;
+  border-bottom:1px solid var(--line);
+  background: rgba(10,12,18,.72);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top:0;
+  z-index:50;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;font-weight:900;
+}
+.dot{
+  width:10px;height:10px;border-radius:99px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 18px rgba(124,58,237,.55);
+}
+.pill{
+  padding:6px 10px;border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color:var(--muted);
+  font-size:.86rem;
+}
+.spacer{flex:1}
+.iconbtn{
+  width:36px;height:36px;border-radius:10px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color:var(--text);
+  cursor:pointer;
+}
+.iconbtn:hover{background: rgba(255,255,255,.08)}
+.iconbtn:focus-visible{outline:none; box-shadow: var(--focus);}
+.layout{
+  height: calc(100vh - 54px);
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+}
+@media (max-width: 980px){
+  .layout{ grid-template-columns: 1fr; }
+  .left{ display:none; }
+  .left.open{ display:block; position:fixed; inset:54px 0 0 0; z-index:80; }
+}
+.left{
+  border-right:1px solid var(--line);
+  background: rgba(8,10,16,.70);
+  backdrop-filter: blur(10px);
+}
+.left .inner{ height:100%; display:flex; flex-direction:column; }
+.section-title{
+  padding:14px 14px 10px;
+  font-size:.82rem;
+  letter-spacing:.14em;
+  text-transform: uppercase;
+  color: rgba(234,240,255,.65);
+}
+.list{
+  overflow:auto;
+  padding: 0 8px 12px;
+}
+.cat{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px;
+  padding:10px 12px;
+  margin: 4px 0;
+  border-radius: 12px;
+  border:1px solid transparent;
+  cursor:pointer;
+  color: rgba(234,240,255,.88);
+}
+.cat:hover{ background: rgba(255,255,255,.06); }
+.cat.active{
+  background: rgba(124,58,237,.18);
+  border-color: rgba(124,58,237,.35);
+}
+.badge{
+  font-size:.78rem;
+  padding:2px 8px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(234,240,255,.72);
+}
+.main{
+  position:relative;
+  min-width:0;
+}
+.maingrid{
+  height:100%;
+  display:grid;
+  grid-template-columns: 420px 1fr;
+}
+@media (max-width: 1200px){
+  .maingrid{ grid-template-columns: 380px 1fr; }
+}
+@media (max-width: 980px){
+  .maingrid{ grid-template-columns: 1fr; }
+  .rightpane{ display:none; }
+  .rightpane.open{ display:block; position:fixed; inset:54px 0 0 0; z-index:70; background: rgba(6,8,12,.92); }
+}
+.midpane{
+  border-right:1px solid var(--line);
+  background: rgba(8,10,16,.45);
+  backdrop-filter: blur(10px);
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.tools{
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  border-bottom:1px solid var(--line);
+  background: rgba(8,10,16,.72);
+  position: sticky;
+  top:0;
+  z-index:10;
+}
+.search{
+  width:100%;
+  padding:12px 14px;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color:var(--text);
+  outline:none;
+}
+.search:focus{ box-shadow: var(--focus); }
+.select{
+  width:100%;
+  padding:11px 14px;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color:var(--text);
+  outline:none;
+}
+.select:focus{ box-shadow: var(--focus); }
+.channels{
+  overflow:auto;
+  padding: 10px 8px 18px;
+}
+.ch{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  margin: 6px 0;
+  border-radius: 14px;
+  border:1px solid transparent;
+  cursor:pointer;
+}
+.ch:hover{ background: rgba(255,255,255,.06); }
+.ch.active{
+  background: rgba(255,255,255,.07);
+  border-color: rgba(124,58,237,.35);
+}
+.logo{
+  width:42px;height:42px;border-radius: 12px;
+  background: rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  flex:0 0 42px;
+}
+.logo img{ width:100%; height:100%; object-fit:contain; padding:7px; background:transparent; }
+.chmeta{ min-width:0; display:flex; flex-direction:column; gap:2px; }
+.chname{
+  font-weight:900;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.chsub{
+  font-size:.86rem;
+  color: rgba(234,240,255,.62);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.rightpane{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.playerwrap{
+  position:relative;
+  flex: 1 1 auto;
+  min-height: 280px;
+  background: #000;
+}
+video{
+  width:100%;
+  height:100%;
+  display:block;
+  background:#000;
+}
+.overlaymsg{
+  position:absolute;
+  inset:auto 18px 18px 18px;
+  padding:12px 14px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.55);
+  color: rgba(255,255,255,.92);
+  font-weight: 700;
+  box-shadow: 0 16px 40px rgba(0,0,0,.55);
+}
+.statusbar{
+  padding:12px 14px;
+  border-top:1px solid var(--line);
+  background: rgba(8,10,16,.80);
+  color: var(--muted);
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.kbd{
+  font-size:.82rem;
+  padding:2px 8px;
+  border-radius: 9px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.78);
+}
+.modalbg{
+  position:fixed; inset:0;
+  display:none;
+  align-items:center; justify-content:center;
+  background: rgba(0,0,0,.72);
+  z-index: 200;
+}
+.modal{
+  width:min(520px, calc(100vw - 24px));
+  border-radius: 18px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(12,14,22,.92);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+.modal h2{ margin: 4px 0 8px; font-size: 1.15rem; }
+.form{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:10px;
+  margin-top: 10px;
+}
+.field label{ display:block; color: var(--muted); font-size:.88rem; margin: 0 0 6px; }
+.field input{
+  width:100%;
+  padding:12px 12px;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color:var(--text);
+  outline:none;
+}
+.field input:focus{ box-shadow: var(--focus); }
+.rowbtns{ display:flex; gap:10px; justify-content:flex-end; margin-top: 10px; }
+.btn{
+  padding:10px 12px;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color:var(--text);
+  cursor:pointer;
+  font-weight: 900;
+}
+.btn.primary{
+  border-color: rgba(124,58,237,.45);
+  background: linear-gradient(135deg, rgba(124,58,237,.9), rgba(79,70,229,.85));
+}
+.btn:hover{ background: rgba(255,255,255,.10); }
+.btn.primary:hover{ filter: brightness(1.02); }
+.btn:focus-visible{ outline:none; box-shadow: var(--focus); }
+
+.empty{
+  padding:14px;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="iconbtn" id="menuBtn" title="Meny">☰</button>
+  <div class="brand"><span class="dot"></span> IPTV Player <span class="pill">Live • m3u8</span></div>
+  <div class="spacer"></div>
+  <button class="iconbtn" id="settingsBtn" title="Inställningar">⚙️</button>
+</div>
+
+<div class="layout">
+  <aside class="left" id="leftPane">
+    <div class="inner">
+      <div class="section-title">CATEGORIES</div>
+      <div class="list" id="groups"></div>
+      <div class="empty" id="leftHint" style="display:none;"></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="maingrid">
+      <section class="midpane">
+        <div class="tools">
+          <input class="search" id="search" placeholder="Search channels..." />
+          <select class="select" id="groupSelect"></select>
+        </div>
+        <div class="channels" id="channels"></div>
+      </section>
+
+      <section class="rightpane" id="rightPane">
+        <div class="playerwrap">
+          <video id="video" controls playsinline></video>
+          <div class="overlaymsg" id="overlayMsg">Välj en kanal</div>
+        </div>
+        <div class="statusbar">
+          <span id="status">Redo.</span>
+          <span class="kbd">Tips: kör via http://localhost (inte file://)</span>
+          <span class="kbd">Output: m3u8</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Settings modal -->
+<div class="modalbg" id="modalBg" role="dialog" aria-modal="true">
+  <div class="modal">
+    <h2>Xtream-inställningar</h2>
+    <div style="color:var(--muted); font-size:.92rem; line-height:1.35">
+      Ange din Xtream host + user/pass. Vi bygger en live-playlist:
+      <span class="kbd">/get.php?type=m3u_plus&output=m3u8</span>
+    </div>
+    <div class="form">
+      <div class="field">
+        <label>Host (ex: http://example.com:8080)</label>
+        <input id="hostInput" placeholder="http://server:port" />
+      </div>
+      <div class="field">
+        <label>Username</label>
+        <input id="userInput" placeholder="username" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input id="passInput" placeholder="password" />
+      </div>
+    </div>
+    <div class="rowbtns">
+      <button class="btn" id="closeBtn">Stäng</button>
+      <button class="btn primary" id="saveBtn">Spara & ladda</button>
+    </div>
+    <div style="margin-top:12px; color:rgba(234,240,255,.55); font-size:.86rem; line-height:1.35">
+      Om kanaler inte laddas: din leverantör kan blockera webbläsare (CORS). Testa först att öppna sidan via en lokal server:
+      <span class="kbd">python3 -m http.server 8080</span>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========= Settings ========= */
+const LS_KEY = "xtreamSettings_live_v1";
+function getSettings(){
+  try{
+    const s = JSON.parse(localStorage.getItem(LS_KEY) || "null");
+    if(!s) return { host:"", user:"", pass:"" };
+    return { host:(s.host||"").trim(), user:(s.user||"").trim(), pass:(s.pass||"").trim() };
+  }catch{ return { host:"", user:"", pass:"" }; }
+}
+function setSettings(s){ localStorage.setItem(LS_KEY, JSON.stringify(s)); }
+
+/* ========= DOM ========= */
+const leftPane = document.getElementById("leftPane");
+const rightPane = document.getElementById("rightPane");
+const groupsEl = document.getElementById("groups");
+const channelsEl = document.getElementById("channels");
+const groupSelect = document.getElementById("groupSelect");
+const searchEl = document.getElementById("search");
+const video = document.getElementById("video");
+const statusEl = document.getElementById("status");
+const overlayMsg = document.getElementById("overlayMsg");
+const leftHint = document.getElementById("leftHint");
+
+/* ========= State ========= */
+let liveGroups = {};     // group -> channels[]
+let groupNames = [];
+let activeGroup = "";
+let activeChannel = null;
+let hls = null;
+
+function setStatus(msg){ statusEl.textContent = msg; }
+
+/* ========= M3U parsing (from working file) ========= */
+function parseM3U(m3uText) {
+  const lines = m3uText.split(/\r?\n/);
+  const groups = {};
+  let currentInfo = null;
+  const attrRegex = /(\w+(?:-\w+)*)="([^"]*)"/g;
+
+  for (let line of lines) {
+    line = line.trim();
+    if (!line) continue;
+
+    if (line.startsWith("#EXTINF")) {
+      currentInfo = { name:"", tvgId:"", tvgName:"", tvgLogo:"", group:"" };
+      const headerAndName = line.split(",", 2);
+      const infoPart = headerAndName[0];
+      const namePart = headerAndName[1] || "";
+
+      let match;
+      while ((match = attrRegex.exec(infoPart)) !== null) {
+        const key = match[1];
+        const val = match[2];
+        if (key === "tvg-id")      currentInfo.tvgId   = val;
+        if (key === "tvg-name")    currentInfo.tvgName = val;
+        if (key === "tvg-logo")    currentInfo.tvgLogo = val;
+        if (key === "group-title") currentInfo.group   = val;
+      }
+      currentInfo.name = currentInfo.tvgName || namePart.trim() || "Okänd kanal";
+      if (!currentInfo.group) currentInfo.group = "Okategoriserat";
+    } else if (currentInfo && !line.startsWith("#")) {
+      const ch = {
+        name: currentInfo.name,
+        tvgId: currentInfo.tvgId,
+        tvgName: currentInfo.tvgName,
+        tvgLogo: currentInfo.tvgLogo,
+        group: currentInfo.group,
+        url: line
+      };
+      if (!groups[ch.group]) groups[ch.group] = [];
+      groups[ch.group].push(ch);
+      currentInfo = null;
+    }
+  }
+  return groups;
+}
+
+/* ========= UI builders ========= */
+function normalizeGroups(){
+  groupNames = Object.keys(liveGroups || {}).sort((a,b)=>a.localeCompare(b,"sv"));
+  // pick default
+  const prefer = groupNames.find(n => /^(all|alla)$/i.test(String(n).trim()));
+  activeGroup = prefer || groupNames[0] || "";
+}
+function renderGroups(){
+  groupsEl.innerHTML = "";
+  groupSelect.innerHTML = "";
+  if(!groupNames.length){
+    leftHint.style.display = "block";
+    leftHint.textContent = "Inga kanaler hittades. Öppna ⚙️ och kontrollera host/user/pass.";
+    return;
+  }
+  leftHint.style.display = "none";
+
+  groupNames.forEach(g=>{
+    const item = document.createElement("div");
+    item.className = "cat" + (g===activeGroup ? " active":"");
+    const count = (liveGroups[g]||[]).length;
+    item.innerHTML = `<div style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escapeHtml(g)}</div><span class="badge">${count}</span>`;
+    item.onclick = ()=>{ setActiveGroup(g); };
+    groupsEl.appendChild(item);
+
+    const opt = document.createElement("option");
+    opt.value = g;
+    opt.textContent = `${g} (${count})`;
+    groupSelect.appendChild(opt);
+  });
+  groupSelect.value = activeGroup;
+}
+function setActiveGroup(g){
+  activeGroup = g;
+  renderGroups();
+  renderChannels();
+}
+function escapeHtml(s){
+  return String(s||"").replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+function renderChannels(){
+  const list = (liveGroups[activeGroup] || []);
+  const q = (searchEl.value || "").trim().toLowerCase();
+
+  const filtered = !q ? list : list.filter(ch=>{
+    const n = (ch.name||"").toLowerCase();
+    return n.includes(q);
+  });
+
+  channelsEl.innerHTML = "";
+  if(!filtered.length){
+    channelsEl.innerHTML = `<div class="empty">Inga kanaler matchar din sökning.</div>`;
+    return;
+  }
+
+  filtered.forEach(ch=>{
+    const row = document.createElement("div");
+    row.className = "ch" + (activeChannel && activeChannel.url===ch.url ? " active":"");
+    const logo = ch.tvgLogo ? `<img alt="" src="${escapeHtml(ch.tvgLogo)}" onerror="this.remove()">` : `<span style="font-weight:900; opacity:.8">${escapeHtml((ch.name||"?").slice(0,1).toUpperCase())}</span>`;
+    row.innerHTML = `
+      <div class="logo">${logo}</div>
+      <div class="chmeta">
+        <div class="chname">${escapeHtml(ch.name)}</div>
+        <div class="chsub">${escapeHtml(ch.group || "")}</div>
+      </div>
+    `;
+    row.onclick = ()=> selectChannel(ch);
+    channelsEl.appendChild(row);
+  });
+}
+
+/* ========= Player ========= */
+function resetPlayer(){
+  try{
+    overlayMsg.style.display = "block";
+    if(hls){ try{ hls.destroy(); }catch(e){} hls = null; }
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+  }catch(e){}
+}
+function playUrl(url){
+  resetPlayer();
+  overlayMsg.textContent = "Laddar…";
+  setStatus("Laddar stream…");
+
+  // If url is HLS (m3u8) use hls.js when needed
+  const isM3U8 = /\.m3u8(\?|$)/i.test(url);
+
+  if (Hls.isSupported() && isM3U8){
+    hls = new Hls({ enableWorker:true, lowLatencyMode:false });
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MEDIA_ATTACHED, () => {
+      hls.loadSource(url);
+    });
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      video.play().catch(()=>{});
+      overlayMsg.style.display = "none";
+      setStatus("Spelar (HLS).");
+    });
+    hls.on(Hls.Events.ERROR, (evt, data) => {
+      console.warn("HLS error", data);
+      if (data && data.fatal){
+        setStatus("⚠️ Kunde inte spela. Prova annan kanal eller kontrollera CORS.");
+        overlayMsg.textContent = "Playback problem (HLS).";
+      } else {
+        setStatus("⚠️ HLS-varning. Försöker fortsätta…");
+      }
+    });
+  } else {
+    // Native playback fallback
+    video.src = url;
+    video.play().then(()=>{
+      overlayMsg.style.display = "none";
+      setStatus("Spelar (native).");
+    }).catch(()=>{
+      overlayMsg.textContent = "Playback problem.";
+      setStatus("❌ Streamen kunde inte spelas i denna webbläsare.");
+    });
+  }
+}
+function selectChannel(ch){
+  activeChannel = ch;
+  renderChannels();
+  overlayMsg.style.display = "block";
+  overlayMsg.textContent = ch.name || "Laddar…";
+  playUrl(ch.url);
+  // mobile: show player
+  rightPane.classList.add("open");
+  leftPane.classList.remove("open");
+}
+
+/* ========= Loading ========= */
+function buildPlaylistUrl(host, user, pass){
+  const base = String(host||"").trim().replace(/\/+$/,"");
+  if(!base || !user || !pass) return "";
+  const u = encodeURIComponent(user);
+  const p = encodeURIComponent(pass);
+  // Important for web playback:
+  return `${base}/get.php?username=${u}&password=${p}&type=m3u_plus&output=m3u8`;
+}
+async function loadPlaylist(){
+  const s = getSettings();
+  if(!s.host || !s.user || !s.pass){
+    setStatus("Öppna ⚙️ och fyll i host/user/pass.");
+    overlayMsg.textContent = "Öppna ⚙️ för att logga in.";
+    overlayMsg.style.display = "block";
+    groupsEl.innerHTML = "";
+    channelsEl.innerHTML = `<div class="empty">Ingen inloggning ännu.</div>`;
+    groupSelect.innerHTML = "";
+    leftHint.style.display = "none";
+    return;
+  }
+
+  const url = buildPlaylistUrl(s.host, s.user, s.pass);
+  setStatus("Hämtar playlist…");
+  overlayMsg.textContent = "Hämtar kanaler…";
+  overlayMsg.style.display = "block";
+  leftHint.style.display = "none";
+
+  try{
+    const res = await fetch(url, { cache:"no-store" });
+    if(!res.ok){
+      const t = await res.text().catch(()=> "");
+      throw new Error(`HTTP ${res.status}: ${t.slice(0,160)}`);
+    }
+    const text = await res.text();
+    if(!text || !text.includes("#EXTM3U")) {
+      throw new Error("Ogiltig playlist (saknar #EXTM3U).");
+    }
+
+    liveGroups = parseM3U(text);
+    normalizeGroups();
+    renderGroups();
+    renderChannels();
+    setStatus(`✅ Laddade ${groupNames.length} kategorier.`);
+    overlayMsg.textContent = "Välj en kanal";
+  }catch(err){
+    console.error(err);
+    liveGroups = {};
+    groupNames = [];
+    renderGroups();
+    channelsEl.innerHTML = `<div class="empty">
+      ❌ Kunde inte ladda playlist.<br><br>
+      <b>Vanliga orsaker:</b><br>
+      • Du kör via <span class="kbd">file://</span> (använd lokal server).<br>
+      • Leverantören blockerar CORS för webbläsare.<br>
+      • Fel host/user/pass eller fel port.<br><br>
+      <b>Fel:</b> ${escapeHtml(err.message || String(err))}
+    </div>`;
+    setStatus("❌ Misslyckades att ladda kanaler.");
+    overlayMsg.textContent = "Playback/playlist problem.";
+  }
+}
+
+/* ========= Modal ========= */
+const modalBg = document.getElementById("modalBg");
+const hostInput = document.getElementById("hostInput");
+const userInput = document.getElementById("userInput");
+const passInput = document.getElementById("passInput");
+
+function openModal(){
+  const s = getSettings();
+  hostInput.value = s.host || "";
+  userInput.value = s.user || "";
+  passInput.value = s.pass || "";
+  modalBg.style.display = "flex";
+  hostInput.focus();
+}
+function closeModal(){ modalBg.style.display = "none"; }
+
+document.getElementById("settingsBtn").onclick = openModal;
+document.getElementById("closeBtn").onclick = closeModal;
+modalBg.addEventListener("click", (e)=>{ if(e.target===modalBg) closeModal(); });
+
+document.getElementById("saveBtn").onclick = async ()=>{
+  const s = { host: hostInput.value.trim(), user: userInput.value.trim(), pass: passInput.value.trim() };
+  setSettings(s);
+  closeModal();
+  await loadPlaylist();
+};
+
+document.getElementById("menuBtn").onclick = ()=>{
+  leftPane.classList.toggle("open");
+  // on mobile, hide player when opening menu
+  rightPane.classList.remove("open");
+};
+
+groupSelect.addEventListener("change", ()=> setActiveGroup(groupSelect.value));
+searchEl.addEventListener("input", ()=> renderChannels());
+
+/* ========= Init ========= */
+(function init(){
+  // If opened as file://, warn in status.
+  if (location.protocol === "file:"){
+    setStatus("❌ Kör inte via file://. Starta server: python3 -m http.server 8080");
+  }
+  loadPlaylist();
+})();
+</script>
+</body>
+</html>
